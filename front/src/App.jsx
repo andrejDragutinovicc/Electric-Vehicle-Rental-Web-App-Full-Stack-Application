@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { VehicleTypesProvider } from './contexts/VehicleTypesContext';
 import AuthPage from './components/AuthPage';
 import Dashboard from './components/Dashboard';
 import VehiclesPage from './components/VehiclesPage';
@@ -16,16 +17,18 @@ const ProtectedRoute = ({ children }) => {
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-          <Route path="/vehicles" element={<ProtectedRoute><VehiclesPage /></ProtectedRoute>} />
-          <Route path="/ride" element={<ProtectedRoute><RidePage /></ProtectedRoute>} />
-          <Route path="/history" element={<ProtectedRoute><RideHistoryPage /></ProtectedRoute>} />
-          <Route path="/" element={<Navigate to="/dashboard" />} />
-        </Routes>
-      </Router>
+      <VehicleTypesProvider>
+        <Router>
+          <Routes>
+            <Route path="/auth" element={<AuthPage />} />
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/vehicles" element={<ProtectedRoute><VehiclesPage /></ProtectedRoute>} />
+            <Route path="/ride" element={<ProtectedRoute><RidePage /></ProtectedRoute>} />
+            <Route path="/history" element={<ProtectedRoute><RideHistoryPage /></ProtectedRoute>} />
+            <Route path="/" element={<Navigate to="/dashboard" />} />
+          </Routes>
+        </Router>
+      </VehicleTypesProvider>
     </AuthProvider>
   );
 }

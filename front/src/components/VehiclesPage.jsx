@@ -1,53 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../services/api';
+import { useVehicleTypes } from '../contexts/VehicleTypesContext';
 import Navbar from './Navbar';
 
 const VehiclesPage = () => {
   const [allVehicles, setAllVehicles] = useState([]);
   const [filteredVehicles, setFilteredVehicles] = useState([]);
   const [vehicleTypes, setVehicleTypes] = useState([]);
-  const [vehicleTypeNames, setVehicleTypeNames] = useState({});
   const [selectedType, setSelectedType] = useState('');
-
-  // Fallback type names if API fails
-  const fallbackTypeNames = {
-    1: 'Electric Bike',
-    2: 'Scooter',
-    3: 'Electric Scooter',
-    4: 'Bicycle',
-    5: 'Motorcycle',
-    6: 'Car',
-    7: 'Electric Car',
-    8: 'Truck',
-    9: 'Van',
-    10: 'Bus',
-  };
+  const { vehicleTypeNames } = useVehicleTypes();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [vehicleResponse, typeResponse] = await Promise.all([
-          api.get('vozilo'),
-          api.get('tipvozila').catch(() => ({ data: [] })) // Fallback if endpoint doesn't exist
-        ]);
+        const vehicleResponse = await api.get('vozilo');
         setAllVehicles(vehicleResponse.data);
         setFilteredVehicles(vehicleResponse.data);
         const types = [...new Set(vehicleResponse.data.map(v => v.tipVozilaID))];
         setVehicleTypes(types);
-        
-        // Create map of type ID to name, fallback to hardcoded if empty
-        const typeMap = { ...fallbackTypeNames };
-        if (typeResponse.data && typeResponse.data.length > 0) {
-          typeResponse.data.forEach(type => {
-            typeMap[type.id] = type.naziv;
-          });
-        }
-        setVehicleTypeNames(typeMap);
       } catch (err) {
         console.error('Error fetching vehicles:', err);
-        // Set fallback types
-        setVehicleTypeNames(fallbackTypeNames);
       }
     };
     fetchData();

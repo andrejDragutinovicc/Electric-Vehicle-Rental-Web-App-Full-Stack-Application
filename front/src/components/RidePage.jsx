@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import { useVehicleTypes } from '../contexts/VehicleTypesContext';
 import api from '../services/api';
 import Navbar from './Navbar';
 
@@ -18,30 +19,14 @@ const RidePage = () => {
   const [startTime, setStartTime] = useState(null);
   const [currentDuration, setCurrentDuration] = useState(0);
   const { user } = useAuth();
-
-  // Fallback type names if API fails
-  const fallbackTypeNames = {
-    1: 'Electric Bike',
-    2: 'Scooter',
-    3: 'Electric Scooter',
-    4: 'Bicycle',
-    5: 'Motorcycle',
-    6: 'Car',
-    7: 'Electric Car',
-    8: 'Truck',
-    9: 'Van',
-    10: 'Bus',
-  };
-
-  const [vehicleTypeNames, setVehicleTypeNames] = useState({});
+  const { vehicleTypeNames } = useVehicleTypes();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [vehicleResponse, cityResponse, typeResponse] = await Promise.all([
+        const [vehicleResponse, cityResponse] = await Promise.all([
           api.get('vozilo'),
-          api.get('grad'),
-          api.get('tipvozila').catch(() => ({ data: [] })) // Fallback if endpoint doesn't exist
+          api.get('grad')
         ]);
         setAllVehicles(vehicleResponse.data);
         setFilteredVehicles(vehicleResponse.data);
@@ -49,19 +34,8 @@ const RidePage = () => {
         setVehicleTypes(types);
 
         setCities(cityResponse.data);
-        
-        // Create map of type ID to name, fallback to hardcoded if empty
-        const typeMap = { ...fallbackTypeNames };
-        if (typeResponse.data && typeResponse.data.length > 0) {
-          typeResponse.data.forEach(type => {
-            typeMap[type.id] = type.naziv;
-          });
-        }
-        setVehicleTypeNames(typeMap);
       } catch (err) {
         console.error('Error fetching data:', err);
-        // Set fallback types
-        setVehicleTypeNames(fallbackTypeNames);
       }
     };
     fetchData();
