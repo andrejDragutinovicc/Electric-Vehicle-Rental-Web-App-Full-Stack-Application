@@ -7,6 +7,8 @@ import Dashboard from './components/Dashboard';
 import VehiclesPage from './components/VehiclesPage';
 import RidePage from './components/RidePage';
 import RideHistoryPage from './components/RideHistoryPage';
+import VehicleTypesPage from './components/VehicleTypesPage';
+import GradoviPage from './components/GradoviPage';
 import './App.css';
 
 const ProtectedRoute = ({ children }) => {
@@ -25,6 +27,8 @@ function App() {
             <Route path="/vehicles" element={<ProtectedRoute><VehiclesPage /></ProtectedRoute>} />
             <Route path="/ride" element={<ProtectedRoute><RidePage /></ProtectedRoute>} />
             <Route path="/history" element={<ProtectedRoute><RideHistoryPage /></ProtectedRoute>} />
+            <Route path="/vehicle-types" element={<ProtectedRoute><VehicleTypesPage /></ProtectedRoute>} />
+            <Route path="/gradovi" element={<ProtectedRoute><GradoviPage /></ProtectedRoute>} />
             <Route path="/" element={<Navigate to="/dashboard" />} />
           </Routes>
         </Router>

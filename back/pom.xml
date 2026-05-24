@@ -21,7 +21,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <start-class>com.mycompany.mavenprojectpokusaj2.RentABikeApplication</start-class>
     </properties>
 

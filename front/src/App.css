@@ -504,6 +504,105 @@ body {
   }
 }
 
+/* Vehicle Types */
+.vehicle-types {
+  padding: 2rem;
+  background-color: var(--light-gray);
+  min-height: 100vh;
+}
+
+.vehicle-types h1 {
+  text-align: center;
+  color: var(--primary-green);
+  margin-bottom: 2rem;
+}
+
+.vehicle-types-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vehicle-type-card {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  border-top: 4px solid var(--primary-green);
+  transition: box-shadow 0.3s;
+}
+
+.vehicle-type-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.vehicle-type-card h2 {
+  color: var(--primary-green);
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.vehicle-type-card p {
+  color: var(--dark-gray);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.loading-text {
+  text-align: center;
+  color: var(--primary-green);
+  font-size: 1.1rem;
+}
+
+/* Gradovi */
+.gradovi {
+  padding: 2rem;
+  background-color: var(--light-gray);
+  min-height: 100vh;
+}
+
+.gradovi h1 {
+  text-align: center;
+  color: var(--primary-green);
+  margin-bottom: 2rem;
+}
+
+.gradovi-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grad-card {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  border-top: 4px solid var(--secondary-green);
+  transition: box-shadow 0.3s;
+}
+
+.grad-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.grad-card h2 {
+  color: var(--primary-green);
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.grad-card p {
+  color: var(--dark-gray);
+  margin: 0;
+}
+
 /* Ride History */
 .ride-history {
   padding: 2rem;

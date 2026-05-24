@@ -23,6 +23,8 @@ const Navbar = () => {
         <Link to="/vehicles">Vehicles</Link>
         <Link to="/ride">Ride</Link>
         <Link to="/history">History</Link>
+        <Link to="/vehicle-types">Tipovi Vozila</Link>
+        <Link to="/gradovi">Gradovi</Link>
       </div>
       <div className="navbar-user">
         <span>{userLabel}</span>

@@ -18,6 +18,7 @@ const Dashboard = () => {
         <div className="actions">
           <Link to="/vehicles" className="action-btn">Browse Vehicles</Link>
           <Link to="/ride" className="action-btn">Start a Ride</Link>
+          <Link to="/vehicle-types" className="action-btn">Tipovi Vozila</Link>
         </div>
       </div>
     </div>
