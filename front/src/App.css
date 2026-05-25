@@ -649,3 +649,83 @@ body {
   color: #e74c3c;
   text-align: center;
 }
+
+/* Korisnici */
+.korisnici {
+  padding: 2rem;
+  background-color: var(--light-gray);
+  min-height: 100vh;
+}
+
+.korisnici h1 {
+  text-align: center;
+  color: var(--primary-green);
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--secondary-green);
+  box-shadow: 0 0 0 2px rgba(47, 160, 132, 0.2);
+}
+
+.korisnici-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.korisnik-card {
+  background-color: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  border-top: 4px solid var(--primary-green);
+  transition: box-shadow 0.3s;
+}
+
+.korisnik-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.korisnik-card h2 {
+  color: var(--primary-green);
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.korisnik-card p {
+  color: var(--dark-gray);
+  margin: 0.4rem 0;
+}
+
+.role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.role-admin {
+  background-color: var(--primary-green);
+  color: var(--white);
+}
+
+.role-user {
+  background-color: var(--light-green);
+  color: var(--white);
+}

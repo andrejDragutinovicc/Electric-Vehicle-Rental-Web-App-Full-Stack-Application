@@ -9,6 +9,7 @@ import RidePage from './components/RidePage';
 import RideHistoryPage from './components/RideHistoryPage';
 import VehicleTypesPage from './components/VehicleTypesPage';
 import GradoviPage from './components/GradoviPage';
+import KorisnikPage from './components/KorisnikPage';
 import './App.css';
 
 const ProtectedRoute = ({ children }) => {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/history" element={<ProtectedRoute><RideHistoryPage /></ProtectedRoute>} />
             <Route path="/vehicle-types" element={<ProtectedRoute><VehicleTypesPage /></ProtectedRoute>} />
             <Route path="/gradovi" element={<ProtectedRoute><GradoviPage /></ProtectedRoute>} />
+            <Route path="/korisnici" element={<ProtectedRoute><KorisnikPage /></ProtectedRoute>} />
             <Route path="/" element={<Navigate to="/dashboard" />} />
           </Routes>
         </Router>

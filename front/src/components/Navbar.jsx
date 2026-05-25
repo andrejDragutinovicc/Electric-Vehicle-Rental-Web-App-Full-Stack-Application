@@ -25,6 +25,7 @@ const Navbar = () => {
         <Link to="/history">History</Link>
         <Link to="/vehicle-types">Tipovi Vozila</Link>
         <Link to="/gradovi">Gradovi</Link>
+        <Link to="/korisnici">Korisnici</Link>
       </div>
       <div className="navbar-user">
         <span>{userLabel}</span>
